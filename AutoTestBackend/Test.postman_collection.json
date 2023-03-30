@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "fec3eaf6-907f-4ef9-bc9a-cecb2f464fb8",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21657568"
+	},
+	"item": [
+		{
+			"name": "widget",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Простые проверки на то, что запрос корректно и быстро отработал\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2s\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "widgetid",
+						"value": "49a973bd-2d7c-4b9b-9c28-d986d7757983",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://b2c.pampadu.ru/b2c/widget",
+					"protocol": "https",
+					"host": [
+						"b2c",
+						"pampadu",
+						"ru"
+					],
+					"path": [
+						"b2c",
+						"widget"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Простые проверки на то, что запрос корректно и быстро отработал\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2s\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"29bd2fb8-9333-436d-9607-f2996819362c\",\r\n    \"widgetId\": \"13140\",\r\n    \"pagePath\": \"/view\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://b2c.pampadu.ru/b2c/log/view",
+					"protocol": "https",
+					"host": [
+						"b2c",
+						"pampadu",
+						"ru"
+					],
+					"path": [
+						"b2c",
+						"log",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mark",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Простые проверки на то, что запрос корректно и быстро отработал\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2s\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"//Т.к. мы, например, знаем, что будем тестировать на определенном номере и этот номер у определенной марки машины (Nissan),то в теле ответа ищем интересующую нас марку и вносим в переменную коллекции id этой марки (markId):\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"//Интересующая нас марка\r",
+							"let searchMark = 'Nissan';\r",
+							"\r",
+							"//Ищем в массиве объект с title:Nissan и его id присваиваем переменной markId\r",
+							"let markId = jsonData.find(mark => mark.title === searchMark).id\r",
+							"\r",
+							"//Заносим полученный id в переменную коллекции с ключом markId\r",
+							"pm.collectionVariables.set(\"markId\", markId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "widgetid",
+						"value": "49a973bd-2d7c-4b9b-9c28-d986d7757983",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://b2c.pampadu.ru/b2c/dict/mark",
+					"protocol": "https",
+					"host": [
+						"b2c",
+						"pampadu",
+						"ru"
+					],
+					"path": [
+						"b2c",
+						"dict",
+						"mark"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "company",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Простые проверки на то, что запрос корректно и быстро отработал\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2s\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "widgetid",
+						"value": "49a973bd-2d7c-4b9b-9c28-d986d7757983",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://b2c.pampadu.ru/b2c/dict/company",
+					"protocol": "https",
+					"host": [
+						"b2c",
+						"pampadu",
+						"ru"
+					],
+					"path": [
+						"b2c",
+						"dict",
+						"company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAutoCodeInfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Простые проверки на то, что запрос корректно и быстро отработал\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2s\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"//Проверяем, что в ответе нам пришел действительно тот markIdмашины, номер которой мы вводили на первом шаге\r",
+							"pm.test(\"Check correct markId\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"\r",
+							"    markId = pm.collectionVariables.get(\"markId\");\r",
+							"\r",
+							"    pm.expect(jsonData.data.report.markId).to.eql(markId);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "widgetid",
+						"value": "49a973bd-2d7c-4b9b-9c28-d986d7757983",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://b2c.pampadu.ru/b2c/info/getAutoCodeInfo?licensePlate=Р252ВВ56&token={\"isTrusted\":true}",
+					"protocol": "https",
+					"host": [
+						"b2c",
+						"pampadu",
+						"ru"
+					],
+					"path": [
+						"b2c",
+						"info",
+						"getAutoCodeInfo"
+					],
+					"query": [
+						{
+							"key": "licensePlate",
+							"value": "Р252ВВ56"
+						},
+						{
+							"key": "token",
+							"value": "{\"isTrusted\":true}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "{{url}}",
+			"value": "https://b2c.pampadu.ru",
+			"type": "string"
+		},
+		{
+			"key": "markId",
+			"value": ""
+		}
+	]
+}
